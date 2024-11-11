@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3995838968683091439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5410917853021744844}
+  - component: {fileID: 7917096406992955077}
+  - component: {fileID: 8385045087752057133}
+  m_Layer: 0
+  m_Name: RoomMapTile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5410917853021744844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995838968683091439}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.39596698, y: -0.024057344, z: 0.011746615}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7917096406992955077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995838968683091439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3eb4885bdeb0d34c993e8995f116e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spN: {fileID: 21300000, guid: 3f3ec9f47be2ac546aa40449367cdd34, type: 3}
+  spS: {fileID: 21300000, guid: 84f52962c3e900a46904e57606e3247d, type: 3}
+  spE: {fileID: 21300000, guid: ae1c1e22a16b71443ab27b16f74f548b, type: 3}
+  spW: {fileID: 21300000, guid: d5e467100a8bf164ea15dffc276f5ddb, type: 3}
+  spNS: {fileID: 21300000, guid: 0a1d13ea92229bc4480a764779d09b3e, type: 3}
+  spNE: {fileID: 21300000, guid: 784749035d028d142814e6c247a11534, type: 3}
+  spNW: {fileID: 21300000, guid: 4f32161c7993e384297c9253e82783af, type: 3}
+  spNSE: {fileID: 21300000, guid: 2c801b82a720ebd418780869bf08ae8a, type: 3}
+  spNSW: {fileID: 21300000, guid: 2f604cd642cc81542b632b8976181384, type: 3}
+  spNEW: {fileID: 21300000, guid: 0d7a21a3d4035b44db461973011c0915, type: 3}
+  spSE: {fileID: 21300000, guid: de57d71fc6e2cff48b8324db664dbc31, type: 3}
+  spSW: {fileID: 21300000, guid: 1d310ff01d592ae489f5238fc70c7cc3, type: 3}
+  spSEW: {fileID: 21300000, guid: ff41b15a643239d4e92a3de4d1cdb501, type: 3}
+  spEW: {fileID: 21300000, guid: ef4003d4ad80d124789fb49da80558f6, type: 3}
+  spNSEW: {fileID: 21300000, guid: fdf5b277add95ed43a754e12af056fd4, type: 3}
+  type: 0
+  doors: 0
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  enterColor: {r: 0, g: 1, b: 0.075618744, a: 1}
+  bossColor: {r: 0, g: 0.19270563, b: 1, a: 1}
+  itemColor: {r: 1, g: 0.85359406, b: 0, a: 1}
+  gunColor: {r: 1, g: 0, b: 0.85647964, a: 1}
+--- !u!212 &8385045087752057133
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995838968683091439}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0

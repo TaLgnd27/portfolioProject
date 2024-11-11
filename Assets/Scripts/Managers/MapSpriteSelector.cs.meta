@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: e3eb4885bdeb0d34c993e8995f116e30
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spN: {fileID: 21300000, guid: 3f3ec9f47be2ac546aa40449367cdd34, type: 3}
+  - spS: {fileID: 21300000, guid: 84f52962c3e900a46904e57606e3247d, type: 3}
+  - spE: {fileID: 21300000, guid: ae1c1e22a16b71443ab27b16f74f548b, type: 3}
+  - spW: {fileID: 21300000, guid: d5e467100a8bf164ea15dffc276f5ddb, type: 3}
+  - spNS: {fileID: 21300000, guid: 0a1d13ea92229bc4480a764779d09b3e, type: 3}
+  - spNE: {fileID: 21300000, guid: 784749035d028d142814e6c247a11534, type: 3}
+  - spNW: {fileID: 21300000, guid: 4f32161c7993e384297c9253e82783af, type: 3}
+  - spNSE: {fileID: 21300000, guid: 2c801b82a720ebd418780869bf08ae8a, type: 3}
+  - spNSW: {fileID: 21300000, guid: 2f604cd642cc81542b632b8976181384, type: 3}
+  - spNEW: {fileID: 21300000, guid: 0d7a21a3d4035b44db461973011c0915, type: 3}
+  - spSE: {fileID: 21300000, guid: de57d71fc6e2cff48b8324db664dbc31, type: 3}
+  - spSW: {fileID: 21300000, guid: 1d310ff01d592ae489f5238fc70c7cc3, type: 3}
+  - spSEW: {fileID: 21300000, guid: ff41b15a643239d4e92a3de4d1cdb501, type: 3}
+  - spEW: {fileID: 21300000, guid: ef4003d4ad80d124789fb49da80558f6, type: 3}
+  - spNSEW: {fileID: 21300000, guid: fdf5b277add95ed43a754e12af056fd4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
