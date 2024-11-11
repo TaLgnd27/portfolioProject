@@ -88,6 +88,7 @@ public class Player : Creature
         while (isFiring)
         {
             base.Shoot();
+            delay = gun.gun.rof;
             yield return new WaitForSeconds(delay);
         }
     }

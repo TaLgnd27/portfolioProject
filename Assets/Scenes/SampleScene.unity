@@ -180,7 +180,6 @@ GameObject:
   - component: {fileID: 113800674}
   - component: {fileID: 113800679}
   - component: {fileID: 113800678}
-  - component: {fileID: 113800681}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -300,7 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHPBase: 50
   speedBase: 150
-  gun: {fileID: 113800681}
+  gun: {fileID: 0}
   rb: {fileID: 0}
   lookTarget: {x: 0, y: 0}
   spawnpoint: {fileID: 1059259508}
@@ -459,24 +458,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &113800681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113800673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dd2ce5fbef2ad843b9f237a18d8728c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun: {fileID: 11400000, guid: fc7806eb37d48b64c97b59fce260bb2b, type: 2}
-  owner: {fileID: 0}
-  cooldown: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
-  arc: 90
-  shots: 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
