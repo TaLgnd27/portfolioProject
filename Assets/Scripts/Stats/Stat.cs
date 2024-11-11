@@ -21,6 +21,7 @@ public class Stat
 
     public void RemoveModifier(StatModifier modifier)
     {
+        Debug.Log("Attempt Removal");
         modifiers.Remove(modifier);
     }
 

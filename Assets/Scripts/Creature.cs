@@ -9,7 +9,8 @@ public class Creature : MonoBehaviour
 {
     [SerializeField]
     private int maxHPBase = 5;
-    Stat maxHP;
+    public Stat maxHP;
+    [SerializeField]
     int hp;
 
     [SerializeField]
@@ -45,7 +46,7 @@ public class Creature : MonoBehaviour
 
     private StatModifier dashModifier;
 
-    List<Item> items;
+    List<Item> items = new List<Item>();
 
 
     //public float GetSpeed() { return speed; }
@@ -144,12 +145,15 @@ public class Creature : MonoBehaviour
 
     public void AddItem(Item item)
     {
+        Debug.Log(item);
         items.Append<Item>(item);
         item.OnPickup(this);
+        StartCoroutine(item.DebugRemove());
     }
 
     public void RemoveItem(Item item)
     {
+        item.OnRemove();
         items.Remove(item);
     }
 }

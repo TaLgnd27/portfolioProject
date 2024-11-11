@@ -14,14 +14,15 @@ public class Pickup : MonoBehaviour
         Player player;
         if (obj.TryGetComponent<Player>(out player))
         {
-            Debug.Log(gun);
+            //Debug.Log(gun);
             if (gun != null)
             {
                 Debug.Log("Attach Gun");
                 player.gun.gun = gun;
             }
 
-            if (item)
+            Debug.Log(item);
+            if (item != null)
             {
                 player.AddItem(item);
             }
