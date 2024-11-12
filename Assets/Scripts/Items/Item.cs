@@ -73,11 +73,4 @@ public class Item : ScriptableObject
     {
 
     }
-
-    
-    public IEnumerator DebugRemove()
-    {
-        yield return new WaitForSeconds(5);
-        owner.RemoveItem(this);
-    }
 }

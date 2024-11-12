@@ -16,6 +16,8 @@ public class FloorGenerator : MonoBehaviour
     public RoomSet StandardRoomLayouts;
     public RoomSet StartingRoomLayouts;
     public RoomSet BossRoomLayouts;
+    public RoomSet ItemRoomLayouts;
+    public RoomSet GunRoomLayouts;
 
     List<Vector2Int> endrooms = new List<Vector2Int>();
     List<Vector2Int> latePositions = new List<Vector2Int>();
@@ -33,6 +35,8 @@ public class FloorGenerator : MonoBehaviour
         StandardRoomLayouts = Resources.Load<RoomSet>("Lists/StandardRooms");
         StartingRoomLayouts = Resources.Load<RoomSet>("Lists/StartingRooms");
         BossRoomLayouts = Resources.Load<RoomSet>("Lists/BossRooms");
+        ItemRoomLayouts = Resources.Load<RoomSet>("Lists/ItemRooms");
+        GunRoomLayouts = Resources.Load<RoomSet>("Lists/GunRooms");
 
 
         CreateRooms();
@@ -347,7 +351,10 @@ public class FloorGenerator : MonoBehaviour
                     FindFirstObjectByType<LevelManager>().currentRoom = room;
                     break;
                 case RoomType.Item:
-                    layout = StartingRoomLayouts.rooms[Random.Range(0, StartingRoomLayouts.rooms.Length)];
+                    layout = StartingRoomLayouts.rooms[Random.Range(0, ItemRoomLayouts.rooms.Length)];
+                    break;
+                case RoomType.Gun:
+                    layout = StartingRoomLayouts.rooms[Random.Range(0, GunRoomLayouts.rooms.Length)];
                     break;
                 case RoomType.Boss:
                     layout = BossRoomLayouts.rooms[Random.Range(0, BossRoomLayouts.rooms.Length)];

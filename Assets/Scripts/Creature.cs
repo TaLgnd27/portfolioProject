@@ -148,7 +148,6 @@ public class Creature : MonoBehaviour
         Debug.Log(item);
         items.Append<Item>(item);
         item.OnPickup(this);
-        StartCoroutine(item.DebugRemove());
     }
 
     public void RemoveItem(Item item)
