@@ -11,6 +11,7 @@ public class ItemSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("ItemSpawner");
         items = Resources.Load<ItemSet>("Lists/ItemSet");
 
         Item item = items.items[Random.Range(0, items.items.Length)];

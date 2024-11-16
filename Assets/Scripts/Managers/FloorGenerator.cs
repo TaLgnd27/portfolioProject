@@ -313,7 +313,7 @@ public class FloorGenerator : MonoBehaviour
 
     bool SpecialNeighbors(Vector2Int checkPos)
     {
-        Debug.Log(checkPos);
+        //Debug.Log(checkPos);
         if ((checkPos.y + gridSizeY + 1 < gridSizeY*2 && (rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY + 1] != null && rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY + 1].type != RoomType.Normal))
             && (checkPos.y + gridSizeY - 1 >= 0 && (rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY - 1] != null && rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY - 1].type != RoomType.Normal))
             && (checkPos.x + gridSizeX + 1 < gridSizeX*2 && (rooms[checkPos.x + gridSizeX + 1, checkPos.y + gridSizeY] != null && rooms[checkPos.x + gridSizeX + 1, checkPos.y + gridSizeY].type != RoomType.Normal))
@@ -351,10 +351,10 @@ public class FloorGenerator : MonoBehaviour
                     FindFirstObjectByType<LevelManager>().currentRoom = room;
                     break;
                 case RoomType.Item:
-                    layout = StartingRoomLayouts.rooms[Random.Range(0, ItemRoomLayouts.rooms.Length)];
+                    layout = ItemRoomLayouts.rooms[Random.Range(0, ItemRoomLayouts.rooms.Length)];
                     break;
                 case RoomType.Gun:
-                    layout = StartingRoomLayouts.rooms[Random.Range(0, GunRoomLayouts.rooms.Length)];
+                    layout = GunRoomLayouts.rooms[Random.Range(0, GunRoomLayouts.rooms.Length)];
                     break;
                 case RoomType.Boss:
                     layout = BossRoomLayouts.rooms[Random.Range(0, BossRoomLayouts.rooms.Length)];

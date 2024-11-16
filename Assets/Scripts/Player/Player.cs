@@ -16,9 +16,22 @@ public class Player : Creature
     public delegate void onTransitionDoneEvent();
     public event onTransitionDoneEvent onTransitionDone;
 
+    public delegate void onHealthChangeEvent(float percent);
+    public event onHealthChangeEvent onHealthChange;
+
     public Vector2 moveTarget;
 
     // Update is called once per frame
+    public void Start()
+    {
+        Debug.Log("Checking health change");
+        if (onHealthChange != null)
+        {
+            Debug.Log("Sending hp update");
+            onHealthChange(hp / maxHP.GetModifiedValue());
+        }
+    }
+
     void FixedUpdate()
     {
         if (!isDashing)
@@ -85,11 +98,30 @@ public class Player : Creature
 
     private IEnumerator Shooting(float delay)
     {
+        yield return new WaitForSeconds(0.01f);
         while (isFiring)
         {
             base.Shoot();
             delay = gun.gun.rof;
             yield return new WaitForSeconds(delay);
+        }
+    }
+
+    public override void Heal(int hp)
+    {
+        base.Heal(hp);
+        if(onHealthChange != null)
+        {
+            onHealthChange((float) base.hp / maxHP.GetModifiedValue());
+        }
+    }
+
+    public override void Damage(int hp)
+    {
+        base.Damage(hp);
+        if (onHealthChange != null)
+        {
+            onHealthChange((float) base.hp / maxHP.GetModifiedValue());
         }
     }
 }

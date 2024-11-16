@@ -11,7 +11,7 @@ public class Creature : MonoBehaviour
     private int maxHPBase = 5;
     public Stat maxHP;
     [SerializeField]
-    int hp;
+    public int hp;
 
     [SerializeField]
     private float speedBase = 150;
@@ -51,7 +51,7 @@ public class Creature : MonoBehaviour
 
     //public float GetSpeed() { return speed; }
 
-    public void Awake()
+    public virtual void Awake()
     {
         maxHP = new Stat(maxHPBase);
         speed = new Stat(speedBase);
@@ -68,13 +68,13 @@ public class Creature : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    public void Heal(int hp)
+    public virtual void Heal(int hp)
     {
         this.hp += hp;
         this.hp = Math.Min((int) maxHP.GetModifiedValue(), hp);
     }
 
-    public void Damage(int hp)
+    public virtual void Damage(int hp)
     {
         this.hp -= hp;
         if (this.hp <= 0)

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1280254557240196192
+--- !u!1 &6185127368186690404
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4520132406912113879}
-  - component: {fileID: 128646831563601081}
+  - component: {fileID: 5838047092301713177}
+  - component: {fileID: 6119854455225699729}
   m_Layer: 0
   m_Name: ItemSpawner
   m_TagString: Untagged
@@ -17,28 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4520132406912113879
+--- !u!4 &5838047092301713177
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280254557240196192}
+  m_GameObject: {fileID: 6185127368186690404}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5069916688399265197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &128646831563601081
+--- !u!114 &6119854455225699729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280254557240196192}
+  m_GameObject: {fileID: 6185127368186690404}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c855d6bf5299ce42b035e35b0041f47, type: 3}
@@ -101,8 +101,8 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3871473845227520332, guid: cb89fe119316e244e826bd3ce67f631c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4520132406912113879}
+      insertIndex: 0
+      addedObject: {fileID: 5838047092301713177}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb89fe119316e244e826bd3ce67f631c, type: 3}
 --- !u!4 &5069916688399265197 stripped
