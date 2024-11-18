@@ -95,11 +95,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8622530556105825779, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
       propertyPath: m_Name
-      value: Room Base Variant
+      value: Room Base Gun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1280254557240196192, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
+    - {fileID: 6185127368186690404, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5069916688399265197, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
       insertIndex: -1

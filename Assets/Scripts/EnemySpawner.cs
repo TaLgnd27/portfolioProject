@@ -24,6 +24,7 @@ public class EnemySpawner : MonoBehaviour
                 GameObject enemy = enemySet.enemies[Random.Range(0, enemySet.enemies.Length)];
                 Enemy instance = Object.Instantiate(enemy, transform.position, Quaternion.identity).GetComponent<Enemy>();
                 instance.room = room;
+
                 return instance;
 
             case RoomType.Boss:
@@ -31,6 +32,11 @@ public class EnemySpawner : MonoBehaviour
                 GameObject bossFight = bossSet.enemies[Random.Range(0, enemySet.enemies.Length-1)];
                 Enemy bossInstance = Object.Instantiate(bossFight, transform.position, Quaternion.identity).GetComponentInChildren<Enemy>();
                 bossInstance.room = room;
+                HudManager hudManager = FindAnyObjectByType<HudManager>();
+                Debug.Log(hudManager);
+                bossInstance.onHealthChange += hudManager.bossHP.GetComponent<HealthBar>().UpdateHealthBar;
+                hudManager.ToggleBossHP();
+
                 return bossInstance;
                 //instance.Spawn();
         }

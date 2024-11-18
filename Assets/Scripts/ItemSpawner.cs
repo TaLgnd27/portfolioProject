@@ -16,7 +16,7 @@ public class ItemSpawner : MonoBehaviour
 
         Item item = items.items[Random.Range(0, items.items.Length)];
         GameObject instance = Object.Instantiate(new GameObject(item.name), transform.position, Quaternion.identity);
-
+        instance.layer = 9;
         SpriteRenderer sp = instance.AddComponent<SpriteRenderer>();
         if (item.itemSprite != null)
         {

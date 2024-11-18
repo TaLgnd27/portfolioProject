@@ -15,7 +15,7 @@ public class GunSpawner : MonoBehaviour
 
         Gun gun = guns.guns[Random.Range(0, guns.guns.Length)];
         GameObject instance = Object.Instantiate(new GameObject(gun.name), transform.position, Quaternion.identity);
-
+        instance.layer = 9;
         Debug.Log(instance);
 
         SpriteRenderer sp = instance.AddComponent<SpriteRenderer>();

@@ -48,6 +48,10 @@ public class Creature : MonoBehaviour
 
     List<Item> items = new List<Item>();
 
+    private bool isDead = false;
+
+    public delegate void onHealthChangeEvent(float percent);
+    public event onHealthChangeEvent onHealthChange;
 
     //public float GetSpeed() { return speed; }
 
@@ -66,12 +70,24 @@ public class Creature : MonoBehaviour
         //gun.Init("test", 10, 0.5f, 1, this);
         hp = (int) maxHP.GetModifiedValue();
         rb = gameObject.GetComponent<Rigidbody2D>();
+
+        Debug.Log("Checking health change");
+        if (onHealthChange != null)
+        {
+            Debug.Log("Sending hp update");
+            onHealthChange(hp / maxHP.GetModifiedValue());
+        }
     }
 
     public virtual void Heal(int hp)
     {
         this.hp += hp;
         this.hp = Math.Min((int) maxHP.GetModifiedValue(), hp);
+
+        if (onHealthChange != null)
+        {
+            onHealthChange((float)this.hp / maxHP.GetModifiedValue());
+        }
     }
 
     public virtual void Damage(int hp)
@@ -79,7 +95,16 @@ public class Creature : MonoBehaviour
         this.hp -= hp;
         if (this.hp <= 0)
         {
-            Death();
+            if (!isDead)
+            {
+                isDead = true;
+                Death();
+            }
+        }
+
+        if (onHealthChange != null)
+        {
+            onHealthChange((float)this.hp / maxHP.GetModifiedValue());
         }
     }
 

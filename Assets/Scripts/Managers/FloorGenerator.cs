@@ -233,14 +233,13 @@ public class FloorGenerator : MonoBehaviour
 
     void AddSpecialRooms()
     {
+        rooms[endrooms[0].x, endrooms[0].y].type = RoomType.Boss;
+        endrooms.Remove(endrooms[0]);
         foreach (RoomType type in System.Enum.GetValues(typeof(RoomType)))
-        {
-            if (type == RoomType.Boss){
-                rooms[endrooms[0].x, endrooms[0].y].type = type;
-                endrooms.Remove(endrooms[0]);
-            } else if (type != RoomType.Normal && type != RoomType.Starting)
+        {    
+            if (type != RoomType.Normal && type != RoomType.Starting && type != RoomType.Boss)
             {
-                if (endrooms.Count > 1 && Random.value <= -1)
+                if (endrooms.Count > 1 && Random.value <= 0.5)
                 {
                     rooms[endrooms[0].x, endrooms[0].y].type = type;
                     endrooms.Remove(endrooms[0]);
@@ -254,10 +253,17 @@ public class FloorGenerator : MonoBehaviour
                         checkPos = NewPosition();
                         itr++;
                     }
-
+                    if (!SpecialNeighbors(checkPos))
+                    {
                     rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY] = new Room(checkPos, type);
                     takenPositions.Add(checkPos);
                     latePositions.Add(checkPos);
+                    }
+                    else
+                    {
+                        rooms[endrooms[0].x, endrooms[0].y].type = type;
+                        endrooms.Remove(endrooms[0]);
+                    }
                 }
             }
         }
@@ -313,11 +319,10 @@ public class FloorGenerator : MonoBehaviour
 
     bool SpecialNeighbors(Vector2Int checkPos)
     {
-        //Debug.Log(checkPos);
         if ((checkPos.y + gridSizeY + 1 < gridSizeY*2 && (rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY + 1] != null && rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY + 1].type != RoomType.Normal))
-            && (checkPos.y + gridSizeY - 1 >= 0 && (rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY - 1] != null && rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY - 1].type != RoomType.Normal))
-            && (checkPos.x + gridSizeX + 1 < gridSizeX*2 && (rooms[checkPos.x + gridSizeX + 1, checkPos.y + gridSizeY] != null && rooms[checkPos.x + gridSizeX + 1, checkPos.y + gridSizeY].type != RoomType.Normal))
-            && (checkPos.x + gridSizeX - 1 >= 0 && (rooms[checkPos.x + gridSizeX - 1, checkPos.y + gridSizeY] != null && rooms[checkPos.x + gridSizeX - 1, checkPos.y + gridSizeY].type != RoomType.Normal)))
+            || (checkPos.y + gridSizeY - 1 >= 0 && (rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY - 1] != null && rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY - 1].type != RoomType.Normal))
+            || (checkPos.x + gridSizeX + 1 < gridSizeX*2 && (rooms[checkPos.x + gridSizeX + 1, checkPos.y + gridSizeY] != null && rooms[checkPos.x + gridSizeX + 1, checkPos.y + gridSizeY].type != RoomType.Normal))
+            || (checkPos.x + gridSizeX - 1 >= 0 && (rooms[checkPos.x + gridSizeX - 1, checkPos.y + gridSizeY] != null && rooms[checkPos.x + gridSizeX - 1, checkPos.y + gridSizeY].type != RoomType.Normal)))
         {
             return true;
         }

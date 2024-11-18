@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEditor.Progress;
 
 public class RoomManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class RoomManager : MonoBehaviour
     public int enemyCount = 0;
     public Player player;
     public LevelManager levelManager;
+    [SerializeField]
+    private GameObject[] doors;
 
     void Start()
     {
@@ -29,21 +32,25 @@ public class RoomManager : MonoBehaviour
         {
             tilemap.SetTile(new Vector3Int(0, 4, 0), null);
             tilemap.SetTile(new Vector3Int(-1, 4, 0), null);
+            doors[0].SetActive(true);
         }
         if ((room.doors & 1 << 1) != 0)
         {
             tilemap.SetTile(new Vector3Int(0, -5, 0), null);
             tilemap.SetTile(new Vector3Int(-1, -5, 0), null);
+            doors[1].SetActive(true);
         }
         if ((room.doors & 1 << 2) != 0)
         {
             tilemap.SetTile(new Vector3Int(8, 0, 0), null);
             tilemap.SetTile(new Vector3Int(8, -1, 0), null);
+            doors[2].SetActive(true);
         }
         if ((room.doors & 1 << 3) != 0)
         {
             tilemap.SetTile(new Vector3Int(-9, 0, 0), null);
             tilemap.SetTile(new Vector3Int(-9, -1, 0), null);
+            doors[3].SetActive(true);
         }
     }
 
@@ -104,6 +111,8 @@ public class RoomManager : MonoBehaviour
         if (enemyCount == 0)
         {
             room.isCleared = true;
+            GameObject pickup = Resources.Load<GameObject>("Prefabs/Pickups/Circle");
+            GameObject instance = Object.Instantiate(pickup, transform.position, Quaternion.identity);
             BuildDoors();
         }
     }

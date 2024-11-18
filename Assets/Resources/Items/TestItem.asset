@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Test
   itemDescription: Test
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 1780020fa885f8c43a4c632db4089f50, type: 3}
   healthMod: 500
   speedMod: 500
   owner: {fileID: 0}

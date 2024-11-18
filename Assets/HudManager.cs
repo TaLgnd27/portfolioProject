@@ -6,6 +6,8 @@ public class HudManager : MonoBehaviour
 {
     [SerializeField]
     HealthBar healthBar;
+    [SerializeField]
+    public GameObject bossHP;
 
     // Start is called before the first frame update
     void Start()
@@ -17,16 +19,15 @@ public class HudManager : MonoBehaviour
             player.onHealthChange += UpdateHealth;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     public void UpdateHealth(float percent)
     {
         Debug.Log(percent);
         healthBar.UpdateHealthBar(percent);
+    }
+
+    public void ToggleBossHP()
+    {
+        bossHP.SetActive(!bossHP.activeSelf);
     }
 }

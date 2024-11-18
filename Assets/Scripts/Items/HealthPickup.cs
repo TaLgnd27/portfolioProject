@@ -1,11 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
-public class Pickup : MonoBehaviour
+public class HealthPickup : MonoBehaviour
 {
     [SerializeField]
-    public Gun gun;
-    [SerializeField]
-    public Item item;
+    int hp;
 
     [SerializeField]
     private float checkRadius = 0.75f;
@@ -25,18 +26,7 @@ public class Pickup : MonoBehaviour
         Player player;
         if (obj.TryGetComponent<Player>(out player))
         {
-            //Debug.Log(gun);
-            if (gun != null)
-            {
-                Debug.Log("Attach Gun");
-                player.gun.gun = gun;
-            }
-
-            Debug.Log(item);
-            if (item != null)
-            {
-                player.AddItem(item);
-            }
+            obj.BroadcastMessage("Heal", hp);
             Destroy(gameObject);
         }
     }
@@ -44,13 +34,13 @@ public class Pickup : MonoBehaviour
     private void ResolveCollision()
     {
         Vector2 position = transform.position;
-        //float totalDistance = 0;
+        float totalDistance = 0;
 
         while (Physics2D.OverlapCircle(position, checkRadius, 10))
         {
             Vector2 randomDir = Random.insideUnitCircle.normalized;
             position += randomDir * pushstep;
-            //totalDistance += pushstep;
+            totalDistance += pushstep;
 
             transform.position = position;
         }
