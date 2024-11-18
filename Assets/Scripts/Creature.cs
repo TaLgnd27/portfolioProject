@@ -44,6 +44,9 @@ public class Creature : MonoBehaviour
     [SerializeField]
     int dodgeLayer = 3;
 
+    [SerializeField]
+    private ParticleSystem dodgeParticle;
+
     private StatModifier dashModifier;
 
     List<Item> items = new List<Item>();
@@ -52,6 +55,10 @@ public class Creature : MonoBehaviour
 
     public delegate void onHealthChangeEvent(float percent);
     public event onHealthChangeEvent onHealthChange;
+
+
+
+    private SpriteRenderer spriteRenderer;
 
     //public float GetSpeed() { return speed; }
 
@@ -62,6 +69,8 @@ public class Creature : MonoBehaviour
         dashCooldown = new Stat(dashCooldownBase);
         dashMult = new Stat(dashMultBase);
         dashDuration = new Stat(dashDurationBase);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (gun == null)
         {
@@ -82,7 +91,7 @@ public class Creature : MonoBehaviour
     public virtual void Heal(int hp)
     {
         this.hp += hp;
-        this.hp = Math.Min((int) maxHP.GetModifiedValue(), hp);
+        this.hp = Math.Min((int) maxHP.GetModifiedValue(), this.hp);
 
         if (onHealthChange != null)
         {
@@ -142,7 +151,14 @@ public class Creature : MonoBehaviour
             oldLayer = gameObject.layer;
             gameObject.layer = dodgeLayer;
             dashModifier = new StatModifier(dashMult.GetModifiedValue(), ModifierType.Multiplicative);
+            Color color = spriteRenderer.color;
+            color.a = 0.5f;
+            spriteRenderer.color = color;
             speed.AddModifier(dashModifier);
+            if(dodgeParticle != null)
+            {
+                dodgeParticle.Play();
+            }
             StartCoroutine("Dashing", dashDuration.GetModifiedValue());
         }
     }
@@ -155,6 +171,9 @@ public class Creature : MonoBehaviour
         isDashCooldown = true;
         StartCoroutine("DashCooldown", dashCooldown.GetModifiedValue());
         gameObject.layer = oldLayer;
+        Color color = spriteRenderer.color;
+        color.a = 1; 
+        spriteRenderer.color = color;
     }
 
     private IEnumerator DashCooldown(float duration)

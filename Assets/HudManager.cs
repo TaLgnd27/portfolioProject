@@ -15,14 +15,14 @@ public class HudManager : MonoBehaviour
         Player player = FindAnyObjectByType<Player>();
         if(player != null)
         {
-            Debug.Log("Attaching hp listener");
+            //Debug.Log("Attaching hp listener");
             player.onHealthChange += UpdateHealth;
         }
     }
     
     public void UpdateHealth(float percent)
     {
-        Debug.Log(percent);
+        //Debug.Log(percent);
         healthBar.UpdateHealthBar(percent);
     }
 

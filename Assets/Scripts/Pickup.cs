@@ -8,10 +8,10 @@ public class Pickup : MonoBehaviour
     public Item item;
 
     [SerializeField]
-    private float checkRadius = 0.75f;
+    private float checkRadius = 0.25f;
 
     [SerializeField]
-    private float pushstep = 0.75f;
+    private float pushstep = 0.25f;
 
     private void Start()
     {
@@ -46,12 +46,11 @@ public class Pickup : MonoBehaviour
         Vector2 position = transform.position;
         //float totalDistance = 0;
 
-        while (Physics2D.OverlapCircle(position, checkRadius, 10))
+        while (Physics2D.OverlapCircle(position, checkRadius, 1 << 10))
         {
             Vector2 randomDir = Random.insideUnitCircle.normalized;
             position += randomDir * pushstep;
             //totalDistance += pushstep;
-
             transform.position = position;
         }
     }

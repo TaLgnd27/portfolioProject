@@ -9,10 +9,10 @@ public class HealthPickup : MonoBehaviour
     int hp;
 
     [SerializeField]
-    private float checkRadius = 0.75f;
+    private float checkRadius = 0.25f;
 
     [SerializeField]
-    private float pushstep = 0.75f;
+    private float pushstep = 0.05f;
 
     private void Start()
     {
@@ -33,14 +33,16 @@ public class HealthPickup : MonoBehaviour
 
     private void ResolveCollision()
     {
+        Debug.Log("Resolving Collision");
         Vector2 position = transform.position;
-        float totalDistance = 0;
+        //float totalDistance = 0;
 
-        while (Physics2D.OverlapCircle(position, checkRadius, 10))
+        while (Physics2D.OverlapCircle(position, checkRadius, 1 << 10))
         {
+            Debug.Log("Overlapping Layer 10");
             Vector2 randomDir = Random.insideUnitCircle.normalized;
             position += randomDir * pushstep;
-            totalDistance += pushstep;
+            //totalDistance += pushstep;
 
             transform.position = position;
         }
