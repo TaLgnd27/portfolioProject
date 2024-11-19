@@ -15,13 +15,16 @@ public class RoomManager : MonoBehaviour
     public int enemyCount = 0;
     public Player player;
     public LevelManager levelManager;
+    public HudManager hudManager;
     [SerializeField]
     private GameObject[] doors;
+    //public GameObject mapImage;
 
     void Start()
     {
         player = FindAnyObjectByType<Player>();
         levelManager = FindAnyObjectByType<LevelManager>();
+        hudManager = FindAnyObjectByType<HudManager>();
         player.onTransitionDone += CloseDoors;
         BuildDoors();
     }
@@ -56,8 +59,10 @@ public class RoomManager : MonoBehaviour
 
     public void OnRoomEnter()
     {
+        hudManager.CenterMapOnPoint(this.transform.position);
         if (!room.isCleared)
         {
+            map.SetActive(true);
             foreach (GameObject obj in spawners)
             {
                 EnemySpawner spawner = obj.GetComponent<EnemySpawner>();

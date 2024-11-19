@@ -21,6 +21,8 @@ public class FloorGenerator : MonoBehaviour
 
     List<Vector2Int> endrooms = new List<Vector2Int>();
     List<Vector2Int> latePositions = new List<Vector2Int>();
+    [SerializeField]
+    GameObject map;
 
     // Start is called before the first frame update
     void Start()
@@ -340,10 +342,12 @@ public class FloorGenerator : MonoBehaviour
             Vector3 drawPos = (Vector3) room.gridPos;
             drawPos.x *= 18;
             drawPos.y *= 10;
-            drawPos.z += 20;
-            MapSpriteSelector mapper = Object.Instantiate(mapBase, drawPos, Quaternion.identity).GetComponent<MapSpriteSelector>();
-            mapper.type = room.type;
-            mapper.doors = room.doors;
+            //drawPos.z += 20;
+            GameObject mapper = Object.Instantiate(mapBase, parent: map.transform);
+            mapper.transform.localPosition = drawPos * mapper.transform.localScale.x;
+            MapImageSelector mapSelector = mapper.GetComponent<MapImageSelector>();
+            mapSelector.type = room.type;
+            mapSelector.doors = room.doors;
 
             GameObject layout = StartingRoomLayouts.rooms[Random.Range(0, StartingRoomLayouts.rooms.Length)];
             switch (room.type)
@@ -367,7 +371,7 @@ public class FloorGenerator : MonoBehaviour
             }
             drawPos.z = 0;
             RoomManager generator = Object.Instantiate(layout, drawPos, Quaternion.identity).GetComponent<RoomManager>();
-            generator.map = mapper.gameObject;
+            generator.map = mapSelector.gameObject;
             generator.room = room;
         }
     }

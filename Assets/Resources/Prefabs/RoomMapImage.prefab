@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7436295153147481219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3261095290301735825}
+  - component: {fileID: 780865912009818149}
+  - component: {fileID: 5046457876794594056}
+  - component: {fileID: 6909483562009325110}
+  m_Layer: 5
+  m_Name: RoomMapImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3261095290301735825
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436295153147481219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 18, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &780865912009818149
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436295153147481219}
+  m_CullTransparentMesh: 1
+--- !u!114 &5046457876794594056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436295153147481219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fdf5b277add95ed43a754e12af056fd4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6909483562009325110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436295153147481219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abd0b8cef7f8ba43a7ad8a569120475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spN: {fileID: 21300000, guid: 3f3ec9f47be2ac546aa40449367cdd34, type: 3}
+  spS: {fileID: 21300000, guid: 84f52962c3e900a46904e57606e3247d, type: 3}
+  spE: {fileID: 21300000, guid: ae1c1e22a16b71443ab27b16f74f548b, type: 3}
+  spW: {fileID: 21300000, guid: d5e467100a8bf164ea15dffc276f5ddb, type: 3}
+  spNS: {fileID: 21300000, guid: 0a1d13ea92229bc4480a764779d09b3e, type: 3}
+  spNE: {fileID: 21300000, guid: 784749035d028d142814e6c247a11534, type: 3}
+  spNW: {fileID: 21300000, guid: 4f32161c7993e384297c9253e82783af, type: 3}
+  spNSE: {fileID: 21300000, guid: 2c801b82a720ebd418780869bf08ae8a, type: 3}
+  spNSW: {fileID: 21300000, guid: 2f604cd642cc81542b632b8976181384, type: 3}
+  spNEW: {fileID: 21300000, guid: 0d7a21a3d4035b44db461973011c0915, type: 3}
+  spSE: {fileID: 21300000, guid: de57d71fc6e2cff48b8324db664dbc31, type: 3}
+  spSW: {fileID: 21300000, guid: 1d310ff01d592ae489f5238fc70c7cc3, type: 3}
+  spSEW: {fileID: 21300000, guid: ff41b15a643239d4e92a3de4d1cdb501, type: 3}
+  spEW: {fileID: 21300000, guid: ef4003d4ad80d124789fb49da80558f6, type: 3}
+  spNSEW: {fileID: 21300000, guid: fdf5b277add95ed43a754e12af056fd4, type: 3}
+  type: 0
+  doors: 0
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  enterColor: {r: 0, g: 1, b: 0, a: 1}
+  bossColor: {r: 0, g: 0, b: 1, a: 1}
+  itemColor: {r: 1, g: 0.75964546, b: 0, a: 1}
+  gunColor: {r: 0.9987321, g: 0, b: 1, a: 1}

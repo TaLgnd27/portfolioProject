@@ -33,6 +33,10 @@ public class Creature : MonoBehaviour
     public bool isDashCooldown = false;
 
     [SerializeField]
+    private float dashCountBase = 1;
+    Stat dashCount;
+
+    [SerializeField]
     private float dashMultBase = 4;
     Stat dashMult;
 
@@ -50,6 +54,7 @@ public class Creature : MonoBehaviour
     private StatModifier dashModifier;
 
     List<Item> items = new List<Item>();
+    List<StatModifier> dashCountMods = new List<StatModifier>();
 
     private bool isDead = false;
 
@@ -69,6 +74,7 @@ public class Creature : MonoBehaviour
         dashCooldown = new Stat(dashCooldownBase);
         dashMult = new Stat(dashMultBase);
         dashDuration = new Stat(dashDurationBase);
+        dashCount = new Stat(dashCountBase);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -145,7 +151,7 @@ public class Creature : MonoBehaviour
 
     public void Dash(Vector2 moveInput)
     {
-        if (!isDashing && !isDashCooldown)
+        if ((!isDashing && !isDashCooldown) || (!isDashing && dashCount.GetModifiedValue() > 0))
         {
             isDashing = true;
             oldLayer = gameObject.layer;
@@ -165,6 +171,9 @@ public class Creature : MonoBehaviour
 
     public IEnumerator Dashing(float duration)
     {
+        StatModifier dashCountMod = new StatModifier(-1, ModifierType.Additive);
+        dashCountMods.Add(dashCountMod);
+        dashCount.AddModifier(dashCountMod);
         yield return new WaitForSeconds(duration);
         speed.RemoveModifier(dashModifier);
         isDashing = false;
@@ -180,6 +189,8 @@ public class Creature : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         isDashCooldown = false;
+        dashCount.RemoveModifier(dashCountMods.First());
+        dashCountMods.Remove(dashCountMods.First());
     }
 
     public virtual void Death()
