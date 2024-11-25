@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float velocity;
     public int damage;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     private void Awake()
     {

@@ -207,7 +207,8 @@ MonoBehaviour:
   maxHPBase: 50
   hp: 0
   speedBase: 1
-  gun: {fileID: 7751118847027697844}
+  gun: {fileID: 0}
+  gunBehavior: {fileID: 7751118847027697844}
   rb: {fileID: 0}
   lookTarget: {x: 0, y: 0}
   spawnpoint: {fileID: 8201535996745078042}
@@ -217,10 +218,13 @@ MonoBehaviour:
   dashCountBase: 1
   dashMultBase: 0
   dashDurationBase: 0
+  startLayer: 0
   dodgeLayer: 3
   dodgeParticle: {fileID: 0}
+  isDead: 0
   iTimeBase: 0
   isInvuln: 0
+  spriteRenderer: {fileID: 0}
   player: {fileID: 0}
   isSpawning: 0
   agent: {fileID: 0}

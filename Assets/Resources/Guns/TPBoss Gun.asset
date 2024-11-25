@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54df940d208dfb34bb0ecd281eb84695, type: 3}
+  m_Name: TPBoss Gun
+  m_EditorClassIdentifier: 
+  gunName: TEST
+  gunDescription: 
+  gunSprite: {fileID: 0}
+  gunBehavior: {fileID: 11500000, guid: 6dd2ce5fbef2ad843b9f237a18d8728c, type: 3}
+  rof: 0.5
+  velocity: 10
+  bullet: {fileID: 2635115437084186658, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
+  damage: 10
+  accuracy: 1
+  spread: 0
+  arc: 90
+  shots: 10

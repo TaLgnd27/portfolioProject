@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3123289389653483185}
   - component: {fileID: 6496968324988684149}
   - component: {fileID: 6644683219417736601}
-  - component: {fileID: 4653143956127811165}
   - component: {fileID: 5067851026523621699}
   m_Layer: 8
   m_Name: Arrow
@@ -187,7 +186,8 @@ MonoBehaviour:
   maxHPBase: 10
   hp: 0
   speedBase: 200
-  gun: {fileID: 4653143956127811165}
+  gun: {fileID: 11400000, guid: 273253e03697a614cb0d275230d277fe, type: 2}
+  gunBehavior: {fileID: 0}
   rb: {fileID: 0}
   lookTarget: {x: 0, y: 0}
   spawnpoint: {fileID: 2769350986002238555}
@@ -197,32 +197,17 @@ MonoBehaviour:
   dashCountBase: 1
   dashMultBase: 4
   dashDurationBase: 0.3
+  startLayer: 0
   dodgeLayer: 3
   dodgeParticle: {fileID: 0}
+  isDead: 0
   iTimeBase: 0
   isInvuln: 0
+  spriteRenderer: {fileID: 0}
   player: {fileID: 0}
   isSpawning: 0
   agent: {fileID: 5067851026523621699}
   hasLOS: 0
---- !u!114 &4653143956127811165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2024244579723393214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dd2ce5fbef2ad843b9f237a18d8728c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun: {fileID: 0}
-  owner: {fileID: 6644683219417736601}
-  cooldown: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
-  arc: 45
-  shots: 4
 --- !u!195 &5067851026523621699
 NavMeshAgent:
   m_ObjectHideFlags: 0

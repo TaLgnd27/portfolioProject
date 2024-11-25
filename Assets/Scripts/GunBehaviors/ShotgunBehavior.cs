@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotGun : GunBehavior
+public class ShotgunBehavior : GunBehavior
 {
     [SerializeField]
     int arc = 90;
     [SerializeField]
     int shots = 1;
+
+    public override void ReloadGun()
+    {
+        arc = base.gun.arc;
+        shots = base.gun.shots;
+        base.ReloadGun();
+    }
 
     public override bool Shoot(Quaternion direction, Transform spawnpoint)
     {

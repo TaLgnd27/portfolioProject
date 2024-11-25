@@ -93,15 +93,7 @@ public class Creature : MonoBehaviour
         }
         if (gunBehavior == null)
         {
-            if (gun.gunBehavior != null)
-            {
-                Type type = gun.gunBehavior.GetClass();
-                gunBehavior = (GunBehavior)gameObject.AddComponent(type);
-            }
-            else
-            {
-                gunBehavior = gameObject.AddComponent<GunBehavior>();
-            }
+            UpdateGun();
         }
         //gun.Init("test", 10, 0.5f, 1, this);
         hp = (int) maxHP.GetModifiedValue();
@@ -241,5 +233,31 @@ public class Creature : MonoBehaviour
         items.Remove(item);
     }
 
-    
+    public void UpdateGun()
+    {
+        if (gun == null)
+        {
+            gun = Resources.Load<Gun>("Guns/DefaultGun");
+        }
+        Destroy(gunBehavior);
+        gunBehavior = null;
+        if (gunBehavior == null)
+        {
+            if (gun.gunBehavior != null)
+            {
+                Type type = gun.gunBehavior.GetClass();
+                gunBehavior = (GunBehavior)gameObject.AddComponent(type);
+                gunBehavior.gun = gun;
+                gunBehavior.owner = this;
+                //gunBehavior.ReloadGun();
+            }
+            else
+            {
+                gunBehavior = gameObject.AddComponent<GunBehavior>();
+                gunBehavior.gun = gun;
+                gunBehavior.owner = this;
+                gunBehavior.ReloadGun();
+            }
+        }
+    }
 }

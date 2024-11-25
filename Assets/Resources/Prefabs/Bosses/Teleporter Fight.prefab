@@ -205,7 +205,6 @@ GameObject:
   - component: {fileID: 3538356690239867762}
   - component: {fileID: 3271730186768319812}
   - component: {fileID: 825186321764214995}
-  - component: {fileID: 8597530126575966642}
   m_Layer: 8
   m_Name: Boss
   m_TagString: Untagged
@@ -394,17 +393,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHPBase: 500
+  hp: 0
   speedBase: 150
-  gun: {fileID: 8597530126575966642}
+  gun: {fileID: 11400000, guid: 28e271f3bdc36114cbaad077a671d020, type: 2}
+  gunBehavior: {fileID: 0}
   rb: {fileID: 0}
   lookTarget: {x: 0, y: 0}
   spawnpoint: {fileID: 5574801999859220572}
   isDashing: 0
   dashCooldownBase: 3
   isDashCooldown: 0
+  dashCountBase: 1
   dashMultBase: 4
   dashDurationBase: 0.3
+  startLayer: 0
   dodgeLayer: 3
+  dodgeParticle: {fileID: 0}
+  isDead: 0
+  iTimeBase: 0
+  isInvuln: 0
+  spriteRenderer: {fileID: 0}
   player: {fileID: 0}
   isSpawning: 0
   agent: {fileID: 0}
@@ -417,21 +425,3 @@ MonoBehaviour:
   attackDelay: 0.2
   shotsPerAttack: 4
   teleportsPerAttack: 0
---- !u!114 &8597530126575966642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8585150982606402745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dd2ce5fbef2ad843b9f237a18d8728c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun: {fileID: 0}
-  owner: {fileID: 0}
-  cooldown: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
-  arc: 90
-  shots: 10

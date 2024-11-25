@@ -25,10 +25,10 @@ public class GunBehavior : MonoBehaviour
         ReloadGun();
     }
 
-    public void ReloadGun()
+    public virtual void ReloadGun()
     {
         bulletCollider = gun.bullet.GetComponent<CircleCollider2D>();
-}
+    }
 
     public virtual bool Shoot(Quaternion direction, Transform spawnpoint)
     {
