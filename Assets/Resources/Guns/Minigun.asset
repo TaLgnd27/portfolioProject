@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54df940d208dfb34bb0ecd281eb84695, type: 3}
   m_Name: Minigun
   m_EditorClassIdentifier: 
-  itemDescription: 
-  itemSprite: {fileID: 0}
+  gunName: Minigun
+  gunDescription: 
+  gunSprite: {fileID: 0}
+  gunBehavior: {fileID: 11500000, guid: ededcd177d9148341bd81501fa1e3a18, type: 3}
   rof: 0.08
   velocity: 15
-  gunName: Minigun
   bullet: {fileID: 2635115437084186658, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
   damage: 5
   accuracy: 0
   spread: 10
+  arc: 0
+  shots: 1

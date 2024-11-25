@@ -17,7 +17,7 @@ public class Octagon : Enemy
             //base.Move(moveDir);
             transform.rotation *= Quaternion.Euler(0f, 0f, base.speed.GetModifiedValue());
 
-            hasLOS = base.gun.CanHit(player);
+            hasLOS = base.gunBehavior.CanHit(player);
             base.Shoot();
         }
     }

@@ -42,7 +42,7 @@ public class Pickup : MonoBehaviour
             if (gun != null)
             {
                 Debug.Log("Attach Gun");
-                player.gun.gun = gun;
+                player.gunBehavior.gun = gun;
             }
 
             Debug.Log(item);

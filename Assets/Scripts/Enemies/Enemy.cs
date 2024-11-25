@@ -46,7 +46,7 @@ public class Enemy : Creature
             base.Look(player.transform.position);
             base.Turn();
 
-            hasLOS = base.gun.CanHit(player);
+            hasLOS = base.gunBehavior.CanHit(player);
             //base.Shoot();
         } else
         {

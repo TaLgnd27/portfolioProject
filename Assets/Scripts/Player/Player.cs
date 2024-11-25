@@ -82,7 +82,7 @@ public class Player : Creature
         if (context.started)
         {
             isFiring = true;
-            StartCoroutine("Shooting", gun.gun.rof);
+            StartCoroutine("Shooting", gunBehavior.gun.rof);
         }
         else if (context.canceled)
         {
@@ -105,7 +105,7 @@ public class Player : Creature
         while (isFiring)
         {
             base.Shoot();
-            delay = gun.gun.rof;
+            delay = gunBehavior.gun.rof;
             yield return new WaitForSeconds(delay);
         }
     }

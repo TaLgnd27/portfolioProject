@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements.Experimental;
 
@@ -18,7 +19,9 @@ public class Creature : MonoBehaviour
     public Stat speed;
 
     [SerializeField]
-    public GunBehavior gun;
+    public Gun gun;
+    [SerializeField]
+    public GunBehavior gunBehavior;
     public Rigidbody2D rb;
 
     public Vector2 lookTarget;
@@ -86,7 +89,19 @@ public class Creature : MonoBehaviour
 
         if (gun == null)
         {
-            gun = gameObject.AddComponent<GunBehavior>();
+            gun = Resources.Load<Gun>("Guns/DefaultGun");
+        }
+        if (gunBehavior == null)
+        {
+            if (gun.gunBehavior != null)
+            {
+                Type type = gun.gunBehavior.GetClass();
+                gunBehavior = (GunBehavior)gameObject.AddComponent(type);
+            }
+            else
+            {
+                gunBehavior = gameObject.AddComponent<GunBehavior>();
+            }
         }
         //gun.Init("test", 10, 0.5f, 1, this);
         hp = (int) maxHP.GetModifiedValue();
@@ -160,7 +175,7 @@ public class Creature : MonoBehaviour
     public virtual bool Shoot()
     {
         Quaternion rotation = transform.rotation;
-        return gun.Shoot(rotation, spawnpoint.transform);
+        return gunBehavior.Shoot(rotation, spawnpoint.transform);
     }
 
     public void Dash(Vector2 moveInput)
