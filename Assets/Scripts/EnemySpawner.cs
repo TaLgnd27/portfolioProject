@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
         {
             case RoomType.Normal:
                 if (Random.value <= 0.25) { return null; }
+                Debug.Log(enemySet.enemies.Length);
                 GameObject enemy = enemySet.enemies[Random.Range(0, enemySet.enemies.Length)];
                 Enemy instance = Object.Instantiate(enemy, transform.position, Quaternion.identity).GetComponent<Enemy>();
                 instance.room = room;
@@ -29,13 +30,9 @@ public class EnemySpawner : MonoBehaviour
 
             case RoomType.Boss:
                 Debug.Log("Boss Spawn Attempt");
-                GameObject bossFight = bossSet.enemies[Random.Range(0, enemySet.enemies.Length-1)];
+                GameObject bossFight = bossSet.enemies[Random.Range(0, bossSet.enemies.Length)];
                 Enemy bossInstance = Object.Instantiate(bossFight, transform.position, Quaternion.identity).GetComponentInChildren<Enemy>();
                 bossInstance.room = room;
-                HudManager hudManager = FindAnyObjectByType<HudManager>();
-                Debug.Log(hudManager);
-                bossInstance.onHealthChange += hudManager.bossHP.GetComponent<HealthBar>().UpdateHealthBar;
-                hudManager.ToggleBossHP();
 
                 return bossInstance;
                 //instance.Spawn();

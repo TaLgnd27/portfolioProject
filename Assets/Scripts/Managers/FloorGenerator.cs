@@ -255,14 +255,15 @@ public class FloorGenerator : MonoBehaviour
                         checkPos = NewPosition();
                         itr++;
                     }
-                    if (!SpecialNeighbors(checkPos))
+                    if (!SpecialNeighbors(checkPos) || endrooms.Count <= 0)
                     {
-                    rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY] = new Room(checkPos, type);
-                    takenPositions.Add(checkPos);
-                    latePositions.Add(checkPos);
+                        rooms[checkPos.x + gridSizeX, checkPos.y + gridSizeY] = new Room(checkPos, type);
+                        takenPositions.Add(checkPos);
+                        latePositions.Add(checkPos);
                     }
                     else
                     {
+                        //Debug.Log(rooms.ToString());
                         rooms[endrooms[0].x, endrooms[0].y].type = type;
                         endrooms.Remove(endrooms[0]);
                     }

@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 4989642976396196872}
   - component: {fileID: 3123289389653483185}
   - component: {fileID: 6496968324988684149}
-  - component: {fileID: 964102070814737906}
+  - component: {fileID: 6644683219417736601}
+  - component: {fileID: 4653143956127811165}
   - component: {fileID: 5067851026523621699}
   m_Layer: 8
-  m_Name: Triangle
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 77011b8ea09464e43a717f99b8de4540, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 986955715f589a14485cb07e79b9c7ee, type: 3}
+  m_Color: {r: 0, g: 0.34905243, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,12 +134,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.4765625, y: 0.5}
-      - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: -0.484375, y: -0.5}
-      - {x: 0.5, y: -0.0078125}
+    - - {x: -0.0035369396, y: 0.5}
+      - {x: -0.0025336742, y: 0.2525084}
+      - {x: -0.4990499, y: 0.25306177}
+      - {x: -0.49952507, y: -0.25211167}
+      - {x: -0.0029809475, y: -0.2524531}
+      - {x: -0.0033266544, y: -0.5}
+      - {x: 0.006938696, y: -0.5}
+      - {x: 0.5002487, y: -0.008518457}
       - {x: 0.5, y: 0.0078125}
+      - {x: 0.0078125, y: 0.5}
   m_UseDelaunayMesh: 0
 --- !u!50 &6496968324988684149
 Rigidbody2D:
@@ -167,7 +172,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &964102070814737906
+--- !u!114 &6644683219417736601
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,30 +181,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 2024244579723393214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 398c888ac35d44143a57b2243913f914, type: 3}
+  m_Script: {fileID: 11500000, guid: 75e28af0e6116d249bd6c3f35b096a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHPBase: 30
+  maxHPBase: 10
   hp: 0
-  speedBase: 150
-  gun: {fileID: 0}
+  speedBase: 200
+  gun: {fileID: 4653143956127811165}
   rb: {fileID: 0}
   lookTarget: {x: 0, y: 0}
   spawnpoint: {fileID: 2769350986002238555}
   isDashing: 0
-  dashCooldownBase: 0
+  dashCooldownBase: 3
   isDashCooldown: 0
   dashCountBase: 1
-  dashMultBase: 0
-  dashDurationBase: 0
+  dashMultBase: 4
+  dashDurationBase: 0.3
   dodgeLayer: 3
   dodgeParticle: {fileID: 0}
   iTimeBase: 0
   isInvuln: 0
   player: {fileID: 0}
   isSpawning: 0
-  agent: {fileID: 0}
+  agent: {fileID: 5067851026523621699}
   hasLOS: 0
+--- !u!114 &4653143956127811165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024244579723393214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd2ce5fbef2ad843b9f237a18d8728c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 0}
+  owner: {fileID: 6644683219417736601}
+  cooldown: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  arc: 45
+  shots: 4
 --- !u!195 &5067851026523621699
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -210,7 +233,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 14.99
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

@@ -1008,7 +1008,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.24705882, g: 0.24705882, b: 0.24705882, a: 1}
   m_Origin: {x: -9, y: -5, z: 0}
   m_Size: {x: 18, y: 10, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -3070,6 +3070,7 @@ MonoBehaviour:
   enemyCount: 0
   player: {fileID: 0}
   levelManager: {fileID: 0}
+  hudManager: {fileID: 0}
   doors:
   - {fileID: 6689726369098578960}
   - {fileID: 4135104396156184681}

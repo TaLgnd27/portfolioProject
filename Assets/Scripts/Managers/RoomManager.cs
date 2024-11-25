@@ -70,6 +70,13 @@ public class RoomManager : MonoBehaviour
                 Enemy spawned = spawner.GetComponent<EnemySpawner>().SpawnEnemies();
                 if (spawned != null)
                 {
+                    if (room.type == RoomType.Boss)
+                    {
+                        HudManager hudManager = FindAnyObjectByType<HudManager>();
+                        Debug.Log(hudManager);
+                        spawned.onHealthChange += hudManager.bossHP.GetComponent<HealthBar>().UpdateHealthBar;
+                        hudManager.ToggleBossHP();
+                    }
                     spawned.OnDeath += OnEnemyDeath;
                     enemyCount++;
                 }
@@ -113,11 +120,31 @@ public class RoomManager : MonoBehaviour
     void OnEnemyDeath()
     {
         enemyCount--;
-        if (enemyCount == 0)
+        if (enemyCount <= 0)
         {
+            switch (room.type)
+            {
+                case RoomType.Boss:
+                    if (levelManager.floor < 3)
+                    {
+                        GameObject floorProgressor = Resources.Load<GameObject>("Prefabs/FloorProgressor");
+                        Object.Instantiate(floorProgressor, transform.position, Quaternion.identity);
+                        HudManager hudManager = FindAnyObjectByType<HudManager>();
+                        hudManager.ToggleBossHP();
+                    }
+                    else
+                    {
+
+                    }
+                    break;
+
+                case RoomType.Normal:
+                    GameObject pickup = Resources.Load<GameObject>("Prefabs/Pickups/Health Pickup");
+                    GameObject instance = Object.Instantiate(pickup, transform.position, Quaternion.identity);
+                    break;
+            }
             room.isCleared = true;
-            GameObject pickup = Resources.Load<GameObject>("Prefabs/Pickups/Circle");
-            GameObject instance = Object.Instantiate(pickup, transform.position, Quaternion.identity);
+            
             BuildDoors();
         }
     }

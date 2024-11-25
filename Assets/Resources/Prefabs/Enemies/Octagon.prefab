@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHPBase: 50
+  hp: 0
   speedBase: 1
   gun: {fileID: 7751118847027697844}
   rb: {fileID: 0}
@@ -213,9 +214,13 @@ MonoBehaviour:
   isDashing: 0
   dashCooldownBase: 0
   isDashCooldown: 0
+  dashCountBase: 1
   dashMultBase: 0
   dashDurationBase: 0
   dodgeLayer: 3
+  dodgeParticle: {fileID: 0}
+  iTimeBase: 0
+  isInvuln: 0
   player: {fileID: 0}
   isSpawning: 0
   agent: {fileID: 0}

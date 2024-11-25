@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum SceneIndex
 {
@@ -28,7 +31,12 @@ public class GameManager : MonoBehaviour
 
     bool settingsOpen = false;
 
+    public int floor;
+
     private static GameManager instance;
+
+    public Image fadePanel; // Reference to the Panel's Image
+    public float fadeDuration = 1f;
 
     private void Awake()
     {
@@ -43,7 +51,17 @@ public class GameManager : MonoBehaviour
         // Set the instance and mark as don't destroy on load
         instance = this;
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(fadePanel.GetComponentInParent<Canvas>().gameObject);
         currentState = GameState.MainMenu;
+    }
+
+    private void Start()
+    {
+        // Optional: Start with a fade-in effect
+        if (fadePanel != null)
+        {
+            StartCoroutine(FadeIn());
+        }
     }
 
     public void ChangeState(GameState state)
@@ -53,8 +71,11 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(SceneIndex scene)
     {
-        
-        SceneManager.LoadScene((int) scene);
+
+        if (fadePanel != null)
+        {
+            StartCoroutine(FadeOutAndChangeScene(scene));
+        }
     }
 
     public void LoadMenu(SceneIndex scene)
@@ -89,8 +110,14 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        floor = 0;
         ChangeScene(SceneIndex.Game);
         ChangeState(GameState.Game);
+    }
+
+    public void LoadNewFloor()
+    {
+        ChangeScene(SceneIndex.Game);
     }
 
     public void OnPauseAction(InputAction.CallbackContext context)
@@ -133,7 +160,75 @@ public class GameManager : MonoBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.MoveGameObjectToScene(gameObject, currentScene);
+        DestroyAll();
 
         SceneManager.LoadScene((int) SceneIndex.MainMenu);
+    }
+
+    public void DestroyAll()
+    {
+        GameObject tempParent = new GameObject("TempParent");
+
+        try
+        {
+            // Temporarily move all DontDestroyOnLoad objects under a new parent
+            foreach (GameObject obj in FindObjectsOfType<GameObject>())
+            {
+                if (obj.scene.name == null || obj.scene.name == "" || obj.scene.name == "DontDestroyOnLoad") // Indicates DontDestroyOnLoad
+                {
+                    obj.transform.SetParent(tempParent.transform);
+                }
+            }
+
+            // Destroy the temporary parent, which destroys all children
+            //Destroy(tempParent);
+        }
+        finally
+        {
+            // Ensure we clean up the temporary parent if something goes wrong
+            if (tempParent != null)
+            {
+                //Destroy(tempParent);
+            }
+        }
+
+        Debug.Log("All DontDestroyOnLoad objects destroyed.");
+    }
+
+    private System.Collections.IEnumerator FadeIn()
+    {
+        float elapsedTime = 0f;
+        Color panelColor = fadePanel.color;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(1, 0, elapsedTime / fadeDuration); // Fade from 1 (opaque) to 0 (transparent)
+            fadePanel.color = new Color(panelColor.r, panelColor.g, panelColor.b, alpha);
+            yield return null;
+        }
+
+        fadePanel.color = new Color(panelColor.r, panelColor.g, panelColor.b, 0); // Ensure full transparency
+    }
+
+    private System.Collections.IEnumerator FadeOutAndChangeScene(SceneIndex scene)
+    {
+        float elapsedTime = 0f;
+        Color panelColor = fadePanel.color;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(0, 1, elapsedTime / fadeDuration); // Fade from 0 (transparent) to 1 (opaque)
+            fadePanel.color = new Color(panelColor.r, panelColor.g, panelColor.b, alpha);
+            yield return null;
+        }
+
+        fadePanel.color = new Color(panelColor.r, panelColor.g, panelColor.b, 1); // Ensure full opacity
+
+        // Load the new scene
+        SceneManager.LoadScene((int) scene);
+
+        StartCoroutine(FadeIn());
     }
 }

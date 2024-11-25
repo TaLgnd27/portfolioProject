@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Pickup : MonoBehaviour
 {
@@ -13,8 +14,20 @@ public class Pickup : MonoBehaviour
     [SerializeField]
     private float pushstep = 0.25f;
 
+    public ItemHUD itemHUD;
+
     private void Start()
     {
+        GameObject iHUDPrefab = Resources.Load<GameObject>("Prefabs/ItemHUD");
+        itemHUD = Instantiate(iHUDPrefab, this.transform).GetComponent<ItemHUD>();
+        if (item != null)
+        {
+            itemHUD.InitItem(item);
+        }
+        else if (gun != null)
+        {
+            itemHUD.InitGun(gun);
+        }
         ResolveCollision();
     }
 

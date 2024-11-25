@@ -32,7 +32,14 @@ public class Item : ScriptableObject
         {
             healthModifier = new StatModifier(healthMod, ModifierType.Additive);
             owner.maxHP.AddModifier(healthModifier);
-            owner.Damage(-healthMod);
+            if (healthMod > 0)
+            {
+                owner.Heal(healthMod);
+            }
+            else
+            {
+                owner.Damage(healthMod);
+            }
         }
         if(speedMod != 0)
         {

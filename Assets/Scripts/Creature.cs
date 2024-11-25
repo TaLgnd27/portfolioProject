@@ -44,9 +44,9 @@ public class Creature : MonoBehaviour
     private float dashDurationBase = 0.3f;
     Stat dashDuration;
 
-    int oldLayer;
+    public int startLayer;
     [SerializeField]
-    int dodgeLayer = 3;
+    public int dodgeLayer = 3;
 
     [SerializeField]
     private ParticleSystem dodgeParticle;
@@ -56,25 +56,31 @@ public class Creature : MonoBehaviour
     List<Item> items = new List<Item>();
     List<StatModifier> dashCountMods = new List<StatModifier>();
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     public delegate void onHealthChangeEvent(float percent);
     public event onHealthChangeEvent onHealthChange;
 
+    [SerializeField]
+    private float iTimeBase = 0;
+    public Stat iTime;
+    public bool isInvuln = false;
 
-
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     //public float GetSpeed() { return speed; }
 
     public virtual void Awake()
     {
+        startLayer = gameObject.layer;
+
         maxHP = new Stat(maxHPBase);
         speed = new Stat(speedBase);
         dashCooldown = new Stat(dashCooldownBase);
         dashMult = new Stat(dashMultBase);
         dashDuration = new Stat(dashDurationBase);
         dashCount = new Stat(dashCountBase);
+        iTime = new Stat(iTimeBase);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -105,6 +111,14 @@ public class Creature : MonoBehaviour
         }
     }
 
+    public void RequestHealthUpdate()
+    {
+        if (onHealthChange != null)
+        {
+            onHealthChange((float)this.hp / maxHP.GetModifiedValue());
+        }
+    }
+
     public virtual void Damage(int hp)
     {
         this.hp -= hp;
@@ -112,7 +126,7 @@ public class Creature : MonoBehaviour
         {
             if (!isDead)
             {
-                isDead = true;
+                Debug.Log("Should be dead");
                 Death();
             }
         }
@@ -154,11 +168,10 @@ public class Creature : MonoBehaviour
         if ((!isDashing && !isDashCooldown) || (!isDashing && dashCount.GetModifiedValue() > 0))
         {
             isDashing = true;
-            oldLayer = gameObject.layer;
             gameObject.layer = dodgeLayer;
             dashModifier = new StatModifier(dashMult.GetModifiedValue(), ModifierType.Multiplicative);
             Color color = spriteRenderer.color;
-            color.a = 0.5f;
+            color.a = 0.1f;
             spriteRenderer.color = color;
             speed.AddModifier(dashModifier);
             if(dodgeParticle != null)
@@ -179,7 +192,7 @@ public class Creature : MonoBehaviour
         isDashing = false;
         isDashCooldown = true;
         StartCoroutine("DashCooldown", dashCooldown.GetModifiedValue());
-        gameObject.layer = oldLayer;
+        gameObject.layer = startLayer;
         Color color = spriteRenderer.color;
         color.a = 1; 
         spriteRenderer.color = color;
@@ -195,7 +208,9 @@ public class Creature : MonoBehaviour
 
     public virtual void Death()
     {
-        Destroy(gameObject);
+        Debug.Log("Base death ran");
+        isDead = true;
+        Destroy(this.gameObject);
     }
 
     public void AddItem(Item item)
@@ -210,4 +225,6 @@ public class Creature : MonoBehaviour
         item.OnRemove();
         items.Remove(item);
     }
+
+    
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6368373775617509701}
   - component: {fileID: 1881814048965966794}
   m_Layer: 9
-  m_Name: Circle
+  m_Name: Health Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,6 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b250a45b986414aafd3d84f712bbd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 50
+  hp: 10
   checkRadius: 0.75
   pushstep: 0.75

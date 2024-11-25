@@ -18,6 +18,23 @@ public class Player : Creature
 
     public Vector2 moveTarget;
 
+    public static Player Instance;
+
+    public override void Awake()
+    {
+        if (Player.Instance != null && Player.Instance != this)
+        {
+            Player.Instance.transform.position = this.transform.position;
+            Destroy(gameObject);
+            return;
+        } else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        base.Awake();
+    }
+
     void FixedUpdate()
     {
         if (!isDashing)
@@ -91,5 +108,47 @@ public class Player : Creature
             delay = gun.gun.rof;
             yield return new WaitForSeconds(delay);
         }
+    }
+
+    public override void Damage(int hp)
+    {
+        base.Damage(hp);
+
+        if (!isInvuln)
+        {
+            Debug.Log(isInvuln);
+            isInvuln = true;
+            StartCoroutine("Invuln");
+        }
+    }
+
+    private IEnumerator Invuln()
+    {
+        Debug.Log("Invuln");
+        gameObject.layer = base.dodgeLayer;
+        StartCoroutine("InvulnFlash");
+
+        yield return new WaitForSeconds(iTime.GetModifiedValue());
+
+        StopCoroutine("InvulnFlash");
+        Color color = base.spriteRenderer.color;
+        color.a = 1;
+        base.spriteRenderer.color = color;
+        isInvuln = false;
+        gameObject.layer = base.startLayer;
+    }
+
+    private IEnumerator InvulnFlash()
+    {
+        Debug.Log("Flash");
+        Color color = base.spriteRenderer.color;
+        color.a = 0;
+        base.spriteRenderer.color = color;
+        yield return new WaitForSeconds(0.15f);
+
+        color.a = 1;
+        base.spriteRenderer.color = color;
+        yield return new WaitForSeconds(0.15f);
+        StartCoroutine("InvulnFlash");
     }
 }

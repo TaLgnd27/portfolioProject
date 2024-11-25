@@ -110,6 +110,7 @@ MonoBehaviour:
   enemyCount: 0
   player: {fileID: 0}
   levelManager: {fileID: 0}
+  hudManager: {fileID: 0}
   doors:
   - {fileID: 8147774750468708183}
   - {fileID: 6564083437473224808}
@@ -1237,7 +1238,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_Origin: {x: -9, y: -5, z: 0}
   m_Size: {x: 18, y: 10, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}

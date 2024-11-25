@@ -12,11 +12,22 @@ public class Enemy : Creature
     public event onDeathEvent OnDeath;
     public NavMeshAgent agent;
 
+    private SpriteRenderer rend;
     public bool hasLOS = false;
+
+    private Color color;
 
     public virtual void Start()
     {
+        rend = GetComponent<SpriteRenderer>();
+
         isSpawning = true;
+        GameObject spawnParticlesObj = Resources.Load<GameObject>("Prefabs/SpawnParticles");
+        ParticleSystem particleSystem = Instantiate<GameObject>(spawnParticlesObj, this.transform).GetComponent<ParticleSystem>();
+        var psm = particleSystem.main;
+        color = rend.color;
+        psm.startColor = color;
+
         StartCoroutine("SpawnDelay", 1);
         player = FindObjectOfType<Player>().gameObject;
 
@@ -37,6 +48,9 @@ public class Enemy : Creature
 
             hasLOS = base.gun.CanHit(player);
             //base.Shoot();
+        } else
+        {
+            return;
         }
     }
 
@@ -71,8 +85,10 @@ public class Enemy : Creature
     {
         if (OnDeath != null)
         {
+            Debug.Log("On Death");
             OnDeath();
         }
+        Debug.Log("Run base death");
         base.Death();
     }
 
