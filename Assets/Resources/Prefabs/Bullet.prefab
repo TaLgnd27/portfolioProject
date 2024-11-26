@@ -102,6 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 0
   damage: 0
+  rb: {fileID: 0}
+  bulletCollider: {fileID: 0}
+  bulletRadius: 0
 --- !u!50 &6081194908117568780
 Rigidbody2D:
   serializedVersion: 4
@@ -144,7 +147,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 648
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

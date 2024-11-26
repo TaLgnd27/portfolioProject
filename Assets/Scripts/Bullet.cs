@@ -7,17 +7,22 @@ public class Bullet : MonoBehaviour
     public float velocity;
     public int damage;
     public Rigidbody2D rb;
+    public CircleCollider2D bulletCollider;
 
-    private void Awake()
+    public float bulletRadius;
+
+    public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        bulletCollider = GetComponent<CircleCollider2D>();
+        bulletRadius = (bulletCollider.radius * transform.localScale.y) + 0.05f;
     }
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         rb.velocity = transform.right * velocity;
     }
 
-    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
+    public virtual void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
         collision.gameObject.BroadcastMessage("Damage", damage);
         Destroy(this.gameObject);

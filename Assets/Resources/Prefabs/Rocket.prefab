@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6069785094431847920, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4613478
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6069785094431847920, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.009802163
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6069785094431847920, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -52,6 +52,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6081194908117568780, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081194908117568780, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360887693493593913, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360887693493593913, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360887693493593913, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 648
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5044826328634638932, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
     m_RemovedGameObjects: []
@@ -81,4 +101,7 @@ MonoBehaviour:
   velocity: 0
   damage: 0
   rb: {fileID: 0}
+  bulletCollider: {fileID: 0}
+  bulletRadius: 0
   explosionRadius: 1
+  explosion: {fileID: 6842115305950734596, guid: ce5d1aaf5f4847b43a05c32b6a09e27c, type: 3}

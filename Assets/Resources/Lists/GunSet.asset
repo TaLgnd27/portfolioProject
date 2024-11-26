@@ -15,3 +15,4 @@ MonoBehaviour:
   guns:
   - {fileID: 11400000, guid: 4d7d1a2abfe27974baefce2d6b869443, type: 2}
   - {fileID: 11400000, guid: 273253e03697a614cb0d275230d277fe, type: 2}
+  - {fileID: 11400000, guid: d4fcc2a35d5eae24497d4490f456be92, type: 2}

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54df940d208dfb34bb0ecd281eb84695, type: 3}
+  m_Name: Rocket Launcher
+  m_EditorClassIdentifier: 
+  gunName: Rocket Launcher
+  gunDescription: 
+  gunSprite: {fileID: 0}
+  gunBehavior: {fileID: 11500000, guid: ededcd177d9148341bd81501fa1e3a18, type: 3}
+  rof: 0.5
+  velocity: 10
+  bullet: {fileID: 2436330507071165495, guid: 4aae13840ba78dc4ab736b9808d0fe54, type: 3}
+  damage: 10
+  accuracy: 0.8
+  spread: 10
+  arc: 0
+  shots: 1
