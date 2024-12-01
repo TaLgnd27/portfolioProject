@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     public int floor;
 
-    private static GameManager instance;
+    public static GameManager instance;
 
     public Image fadePanel; // Reference to the Panel's Image
     public float fadeDuration = 1f;

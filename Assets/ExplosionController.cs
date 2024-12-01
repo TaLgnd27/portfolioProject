@@ -7,6 +7,9 @@ public class ExplosionController : MonoBehaviour
     public ParticleSystem[] explosionEffects; // Reference to the ParticleSystem
     public float explosionSize = 1f;      // Size of the explosion in Unity units
 
+    [SerializeField]
+    AudioSource explosionAudioSource;
+
     public void TriggerExplosion(float size)
     {
         explosionSize = size; // Set the explosion size dynamically

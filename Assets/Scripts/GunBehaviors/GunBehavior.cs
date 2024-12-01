@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class GunBehavior : MonoBehaviour
@@ -14,6 +15,8 @@ public class GunBehavior : MonoBehaviour
 
     public bool cooldown = false;
     public Color color;
+
+    public AudioSource audioSource;
 
     public void Start()
     {
@@ -28,6 +31,12 @@ public class GunBehavior : MonoBehaviour
     public virtual void ReloadGun()
     {
         bulletCollider = gun.bullet.GetComponent<CircleCollider2D>();
+        if(audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.playOnAwake = false;
+        audioSource.clip = gun.sound;
     }
 
     public virtual bool Shoot(Quaternion direction, Transform spawnpoint)
@@ -48,6 +57,8 @@ public class GunBehavior : MonoBehaviour
             cooldown = true;
 
             StartCoroutine("Cooldown", gun.rof);
+
+            audioSource.Play();
             return true;
         }
         return false;

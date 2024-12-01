@@ -30,4 +30,7 @@ public class Gun : ScriptableObject
     public int arc = 0;
     [SerializeField]
     public int shots = 1;
+
+    [SerializeField]
+    public AudioClip sound;
 }

@@ -24,7 +24,10 @@ public class Bullet : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
-        collision.gameObject.BroadcastMessage("Damage", damage);
-        Destroy(this.gameObject);
+        if (collision.gameObject.layer != 3)
+        {
+            collision.gameObject.BroadcastMessage("Damage", damage);
+            Destroy(this.gameObject);
+        }
     }
 }

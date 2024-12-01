@@ -39,6 +39,7 @@ public class ShotgunBehavior : GunBehavior
             }
             base.cooldown = true;
 
+            audioSource.Play();
             StartCoroutine("Cooldown", gun.rof);
             return true;
         }

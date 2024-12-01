@@ -24,3 +24,4 @@ MonoBehaviour:
   spread: 10
   arc: 0
   shots: 1
+  sound: {fileID: 8300000, guid: cca7cdca95a01204d9d56d4e2f713042, type: 3}

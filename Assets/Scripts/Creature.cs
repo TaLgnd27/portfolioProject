@@ -71,6 +71,10 @@ public class Creature : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
+    public AudioSource dashAudio;
+    public AudioSource dashCooldownAudio;
+
+
     //public float GetSpeed() { return speed; }
 
     public virtual void Awake()
@@ -104,6 +108,20 @@ public class Creature : MonoBehaviour
         {
             Debug.Log("Sending hp update");
             onHealthChange(hp / maxHP.GetModifiedValue());
+        }
+
+        if (dashAudio == null)
+        {
+            dashAudio = gameObject.AddComponent<AudioSource>();
+            dashAudio.clip = Resources.Load<AudioClip>("Audio/dash");
+            dashAudio.playOnAwake = false;
+        }
+
+        if (dashCooldownAudio == null)
+        {
+            dashCooldownAudio = gameObject.AddComponent<AudioSource>();
+            dashCooldownAudio.clip = Resources.Load<AudioClip>("Audio/dashCooldown");
+            dashCooldownAudio.playOnAwake = false;
         }
     }
 
@@ -174,6 +192,7 @@ public class Creature : MonoBehaviour
     {
         if ((!isDashing && !isDashCooldown) || (!isDashing && dashCount.GetModifiedValue() > 0))
         {
+            dashAudio.Play();
             isDashing = true;
             gameObject.layer = dodgeLayer;
             dashModifier = new StatModifier(dashMult.GetModifiedValue(), ModifierType.Multiplicative);
@@ -199,7 +218,14 @@ public class Creature : MonoBehaviour
         isDashing = false;
         isDashCooldown = true;
         StartCoroutine("DashCooldown", dashCooldown.GetModifiedValue());
-        gameObject.layer = startLayer;
+        if (isInvuln)
+        {
+            gameObject.layer = dodgeLayer;
+        }
+        else
+        {
+            gameObject.layer = startLayer;
+        }
         Color color = spriteRenderer.color;
         color.a = 1; 
         spriteRenderer.color = color;
@@ -208,6 +234,8 @@ public class Creature : MonoBehaviour
     private IEnumerator DashCooldown(float duration)
     {
         yield return new WaitForSeconds(duration);
+        //Debug.Log(dashCooldownAudio.clip);
+        dashCooldownAudio.Play();
         isDashCooldown = false;
         dashCount.RemoveModifier(dashCountMods.First());
         dashCountMods.Remove(dashCountMods.First());

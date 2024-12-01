@@ -31,6 +31,7 @@ public class BurstGun : GunBehavior
             }
             base.cooldown = true;
 
+            audioSource.Play();
             StartCoroutine("Cooldown", gun.rof);
             return true;
         }
