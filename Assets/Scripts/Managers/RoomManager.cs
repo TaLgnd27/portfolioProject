@@ -134,7 +134,10 @@ public class RoomManager : MonoBehaviour
                     }
                     else
                     {
-
+                        GameObject floorProgressor = Resources.Load<GameObject>("Prefabs/GameFinisher");
+                        Object.Instantiate(floorProgressor, transform.position, Quaternion.identity);
+                        HudManager hudManager = FindAnyObjectByType<HudManager>();
+                        hudManager.ToggleBossHP();
                     }
                     break;
 

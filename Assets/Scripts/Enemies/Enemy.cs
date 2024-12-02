@@ -96,6 +96,7 @@ public class Enemy : Creature
     {
         yield return new WaitForSeconds(delay);
         isSpawning = false;
+        OnSpawn();
     }
 
     public virtual IEnumerator Pathfinding(Transform target)
@@ -108,5 +109,10 @@ public class Enemy : Creature
                 agent.SetDestination(target.position);
             }
         }
+    }
+
+    public virtual void OnSpawn()
+    {
+
     }
 }
