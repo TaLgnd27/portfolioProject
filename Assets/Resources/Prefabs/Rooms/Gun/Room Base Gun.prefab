@@ -53,6 +53,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1129491756753998882, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.85490197
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129491756753998882, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423120081714712268, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.85490197
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423120081714712268, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777060149183934356, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.85490197
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777060149183934356, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5069916688399265197, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -96,6 +120,14 @@ PrefabInstance:
     - target: {fileID: 8622530556105825779, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
       propertyPath: m_Name
       value: Room Base Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673206892338992396, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.85490197
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673206892338992396, guid: 893ac78ac1f9fc948ab799bf6df1ecd3, type: 3}
+      propertyPath: m_Color.g
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
