@@ -273,7 +273,8 @@ public class Creature : MonoBehaviour
         {
             if (gun.gunBehavior != null)
             {
-                Type type = gun.gunBehavior.GetClass();
+                Type type = Type.GetType(gun.gunBehavior);
+                Debug.Log(gun.gunBehavior);
                 gunBehavior = (GunBehavior)gameObject.AddComponent(type);
                 gunBehavior.gun = gun;
                 gunBehavior.owner = this;

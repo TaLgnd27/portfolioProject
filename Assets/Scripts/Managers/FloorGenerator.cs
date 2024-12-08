@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Overlays;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class FloorGenerator : MonoBehaviour
 {

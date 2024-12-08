@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,8 +12,23 @@ public class Gun : ScriptableObject
     [SerializeField]
     public Sprite gunSprite = null;
 
+    public string gunBehavior;
+
+#if UNITY_EDITOR
     [SerializeField]
-    public MonoScript gunBehavior;
+    public MonoScript monoScript;
+
+    private void OnValidate()
+    {
+        if (monoScript != null)
+        {
+            // Store the type name during editing
+            gunBehavior = monoScript.GetClass().AssemblyQualifiedName;
+        }
+    }
+#endif
+
+    
 
     [SerializeField]
     public float rof = 0.5f;

@@ -15,7 +15,9 @@ MonoBehaviour:
   gunName: Shotgun
   gunDescription: 
   gunSprite: {fileID: 0}
-  gunBehavior: {fileID: 11500000, guid: 6dd2ce5fbef2ad843b9f237a18d8728c, type: 3}
+  gunBehavior: ShotgunBehavior, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  monoScript: {fileID: 11500000, guid: 6dd2ce5fbef2ad843b9f237a18d8728c, type: 3}
   rof: 0.5
   velocity: 10
   bullet: {fileID: 2635115437084186658, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}

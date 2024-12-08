@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54df940d208dfb34bb0ecd281eb84695, type: 3}
-  m_Name: Rocket Launcher
+  m_Name: Testing Gun
   m_EditorClassIdentifier: 
-  gunName: Rocket Launcher
+  gunName: TEST
   gunDescription: 
   gunSprite: {fileID: 0}
   gunBehavior: GunBehavior, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   monoScript: {fileID: 11500000, guid: ededcd177d9148341bd81501fa1e3a18, type: 3}
-  rof: 0.5
-  velocity: 8
-  bullet: {fileID: 2436330507071165495, guid: 4aae13840ba78dc4ab736b9808d0fe54, type: 3}
-  damage: 25
-  accuracy: 0.8
-  spread: 10
+  rof: 0.01
+  velocity: 10
+  bullet: {fileID: 2635115437084186658, guid: f7f0ed277af56d744b73ce7feffb45e0, type: 3}
+  damage: 10000
+  accuracy: 1
+  spread: 0
   arc: 0
   shots: 1
   sound: {fileID: 8300000, guid: cca7cdca95a01204d9d56d4e2f713042, type: 3}

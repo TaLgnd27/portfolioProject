@@ -20,7 +20,12 @@ public class LevelManager : MonoBehaviour
     public void NextFloor()
     {
         gameManager.floor++;
-
-        gameManager.LoadNewFloor();
+        if (floor < 2)
+        {
+            gameManager.LoadNewFloor();
+        } else
+        {
+            gameManager.EndGame();
+        }
     }
 }

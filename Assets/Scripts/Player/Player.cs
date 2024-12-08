@@ -151,4 +151,10 @@ public class Player : Creature
         yield return new WaitForSeconds(0.15f);
         StartCoroutine("InvulnFlash");
     }
+
+    private void OnDestroy()
+    {
+        if(Instance == this)
+            GameManager.instance.EndGame();
+    }
 }
