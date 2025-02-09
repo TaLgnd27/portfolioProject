@@ -286,11 +286,35 @@ MonoBehaviour:
     m_ActionId: f94f6d0e-3041-4aba-9894-ab82fc53bcfa
     m_ActionName: Player/New action
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 113800675}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnMap
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 223a8134-adb3-4f74-9538-92934e118320
     m_ActionName: Player/Map[/Keyboard/tab]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 113800675}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a9d47bea-12fb-48e5-bcac-f5e62169a17b
     m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
@@ -6068,7 +6092,6 @@ GameObject:
   - component: {fileID: 2037539624}
   - component: {fileID: 2037539623}
   - component: {fileID: 2037539627}
-  - component: {fileID: 2037539628}
   m_Layer: 5
   m_Name: Hud
   m_TagString: Untagged
@@ -6177,72 +6200,6 @@ MonoBehaviour:
   bossHP: {fileID: 101731362}
   map: {fileID: 1757630238}
   mapContent: {fileID: 672954480}
---- !u!114 &2037539628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037539622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 309cbcea11b193242aca0771b691806b, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2b79b23c-ecec-4122-82a6-003b9a5ebac5
-    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1826f660-9c8c-4c11-8ead-a209d1f9fcb3
-    m_ActionName: Player/Aim[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 41040a28-215e-4365-a027-ee58f4737591
-    m_ActionName: Player/Shoot[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f94f6d0e-3041-4aba-9894-ab82fc53bcfa
-    m_ActionName: Player/Dodge[/Keyboard/leftShift]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2037539627}
-        m_TargetAssemblyTypeName: HudManager, Assembly-CSharp
-        m_MethodName: OnMapInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 223a8134-adb3-4f74-9538-92934e118320
-    m_ActionName: Player/Map[/Keyboard/tab]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a9d47bea-12fb-48e5-bcac-f5e62169a17b
-    m_ActionName: Player/Pause[/Keyboard/escape]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1001 &1531962079027468953
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -31,6 +32,8 @@ public class GameManager : MonoBehaviour
 
     public Image fadePanel; // Reference to the Panel's Image
     public float fadeDuration = 1f;
+
+    public bool isTransitioning;
 
     private void Awake()
     {
@@ -66,7 +69,7 @@ public class GameManager : MonoBehaviour
     public void ChangeScene(SceneIndex scene)
     {
 
-        if (fadePanel != null)
+        if (fadePanel != null && !isTransitioning)
         {
             StartCoroutine(FadeOutAndChangeScene(scene));
         }
@@ -150,6 +153,11 @@ public class GameManager : MonoBehaviour
         ToggleMenu(SceneIndex.SettingsMenu);
     }
 
+    public void OnQuit()
+    {
+        Application.Quit();
+    }
+
     public void EndGame()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -207,6 +215,7 @@ public class GameManager : MonoBehaviour
 
     private System.Collections.IEnumerator FadeOutAndChangeScene(SceneIndex scene)
     {
+        isTransitioning = true;
         float elapsedTime = 0f;
         Color panelColor = fadePanel.color;
 
@@ -224,5 +233,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene((int) scene);
 
         StartCoroutine(FadeIn());
+        isTransitioning = false;
     }
 }

@@ -26,6 +26,7 @@ public class HudManager : MonoBehaviour
             Debug.Log("Attaching hp listener");
             player.onHealthChange += UpdateHealth;
             player.RequestHealthUpdate();
+            player.hudManager = this;
         }
     }
 

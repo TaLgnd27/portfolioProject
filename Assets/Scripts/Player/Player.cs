@@ -20,6 +20,11 @@ public class Player : Creature
 
     public static Player Instance;
 
+    private bool relativeLook = false;
+
+    public HudManager hudManager;
+    private GameManager gameManager;
+
     public override void Awake()
     {
         if (Player.Instance != null && Player.Instance != this)
@@ -33,6 +38,7 @@ public class Player : Creature
             DontDestroyOnLoad(gameObject);
         }
         base.Awake();
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     void FixedUpdate()
@@ -61,7 +67,15 @@ public class Player : Creature
                     onTransitionDone();
             }
         }
-        Vector3 lookPos = (Vector2)Camera.main.ScreenToWorldPoint(target) - (Vector2)transform.position;
+        Vector3 lookPos;
+        if (relativeLook)
+        {
+            lookPos = ((Vector2)this.transform.position + target) - (Vector2)transform.position;
+        } else
+        {
+            lookPos = target - (Vector2)transform.position;
+        }
+        Debug.Log(target);
         float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
         var rotation = Quaternion.AngleAxis(angle, new Vector3(0, 0, 1));
         transform.rotation = rotation;
@@ -74,7 +88,14 @@ public class Player : Creature
 
     public void Look(InputAction.CallbackContext context)
     {
-        target = context.ReadValue<Vector2>();
+        if (Mouse.current != null && context.control.device is Mouse){
+            target = (Vector2)Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            relativeLook = false;
+        } else if (Gamepad.current != null && context.control.device is Gamepad)
+        {
+            relativeLook = true;
+            target = context.ReadValue<Vector2>();
+        }
     }
 
     public void Shoot(InputAction.CallbackContext context)
@@ -156,5 +177,15 @@ public class Player : Creature
     {
         if(Instance == this)
             GameManager.instance.EndGame();
+    }
+
+    public void OnMap(InputAction.CallbackContext context)
+    {
+        hudManager.OnMapInput(context);
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        gameManager.OnPauseAction(context);
     }
 }
